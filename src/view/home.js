@@ -16,8 +16,8 @@ import {
 import Kategori from '../components/kategori'
 import Lokasi from '../components/lokasi';
 import Bantuan from '../components/bantuan';
-import About from '../components/about'
-import Navbar from '../components/navtab'
+import About from '../components/about';
+import Navbar from '../components/navtab';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
