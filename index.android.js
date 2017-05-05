@@ -15,7 +15,9 @@ import {
 } from 'react-native';
 
 import home from './src/view/home'
-import coba from './coba'
+import test from './src/test/test'
+// import coba from './coba'
+import App from './app/index';
 
 export default class infocimahi extends Component {
  componentDidMount() {
@@ -32,7 +34,7 @@ export default class infocimahi extends Component {
     return (
       <Navigator
         renderScene={this.renderScene}
-        initialRoute={{component: home}}
+        initialRoute={{component: test}}
         ref={(nav) => { this.appNav = nav; }} />
       );
     }
@@ -42,4 +44,4 @@ export default class infocimahi extends Component {
     }
 }
 
-AppRegistry.registerComponent('infocimahi', () => infocimahi);
+AppRegistry.registerComponent('infocimahi', () => home);

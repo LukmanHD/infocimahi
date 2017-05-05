@@ -12,12 +12,14 @@ import {
   View,
   Image,
   ScrollView,
+  Navigator
 } from 'react-native';
 import Kategori from '../components/kategori'
-import Lokasi from '../components/lokasi';
+import Lokasi from '../components/MyLocation';
 import Bantuan from '../components/bantuan';
 import About from '../components/about';
 import Navbar from '../components/navtab';
+import List from '../components/list';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -33,7 +35,7 @@ export default class infocimahi extends Component {
         <ScrollableTabView
         initialPage={0}
         renderTabBar={() => <Navbar />}>
-          <Kategori tabLabel="home"/>
+          <Kategori tabLabel="home" />
           <Lokasi tabLabel="map-marker"/>
           <Bantuan tabLabel="info"/>
           <About tabLabel="group"/>
@@ -41,6 +43,7 @@ export default class infocimahi extends Component {
       </View>
     );
   }
+
 }
 
 const styles = StyleSheet.create({

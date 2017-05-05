@@ -21,7 +21,6 @@ export default class Kategori extends Component {
         dataSource: ds,
     };
   }
-  
   componentWillMount() {
     fetch('http://info-cimahi.netii.net/api/kategori')
       .then((response) => response.json())
@@ -32,27 +31,29 @@ export default class Kategori extends Component {
         console.error(error);
       });
   }
-
+    
+    onList = (rowData) => {
+    this.props.navigation.navigate('List', { ...rowData });
+  };
    
   render() {
-  // const { navigate } = this.props.navigation; 
       return (
         <View style={styles.container}>
           <Text style={styles.judul}>Kategori</Text>
           <ListView
             contentContainerStyle={styles.list}
             dataSource={this.state.dataSource}
-            renderRow={(rowData) => <View style={styles.item} onPress={()=>this.setModalVisible(true)}>
+            renderRow={(rowData) => <View style={styles.item}>
                   <Image
+            title={`${rowData.nama_kategori.toUpperCase()}`}
             style={{width: 110, height: 110}}
             source={{uri: 'http://info-cimahi.netii.net/images/'+rowData.image}}
-            
-          />
+            onPress={this.onList(rowData)}
+            />
          
           </View>
             }
           />
-
         </View>
 
 
