@@ -7,40 +7,35 @@ import {
   Navigator,
   Image
 } from 'react-native';
-import { Container, Header, Content, Tab, Tabs, TabHeading } from 'native-base';
+import { Container, Header, Content, Tab, Tabs, TabHeading, StyleProvider } from 'native-base';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Tab1 from './tabOne'
 import Tab2 from './tabTwo'
 import Tab3 from './tabOne'
+import getTheme from '../theme/components';
+import myTheme from '../theme/variables/myTheme';
 
 export default class infocimahi extends Component {
   render() {
-      const OnList = () =>{
-        this.props.navigator.push({
-          component: Tab2
-        })
-        console.warn("Bisa");
-     }
      
     return (
+      <StyleProvider style={getTheme(myTheme)} >
        <Container>
             <View style={styles.judul}>
           <Image source={require('../assets/logo.png')} style={{width: 100, height: 50}} onPress={this.pre}/>
           
         </View>
 
-            <Tabs tabStyle={{backgroundColor: 'red'}}>
-                <Tab tabStyle={{backgroundColor: 'red'}} heading={ <TabHeading><View style={{ flexDirection:'column', alignItems: 'center' }}><Icon name="list-alt" size={20}style={{color: '#ffffff' }}/><Text>Kategori</Text></View></TabHeading>}>
-                    <Tab1 OnList={OnList}/>
+            <Tabs brandDanger>
+                <Tab heading={ <TabHeading><View style={{ flexDirection:'column', alignItems: 'center' }} tabLabel="Kategori"><Icon name="list-alt" size={20}style={{color: '#ffffff' }} /><Text>Kategori</Text></View></TabHeading>}>
+                    <Tab1 />
                 </Tab>
                 <Tab heading={ <TabHeading><View style={{ flexDirection:'column', alignItems: 'center' }}><Icon name="map-marker" size={20}style={{color: '#ffffff' }}/><Text>Lokasi</Text></View></TabHeading>}>
                     <Tab2 />
                 </Tab>
-                <Tab heading={ <TabHeading><Icon name="map-marker" /></TabHeading>}>
-                    <Tab3 />
-                </Tab>
             </Tabs>
             </Container>
+            </StyleProvider>
     );
   }
   pre(){
@@ -80,3 +75,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
 });
+

@@ -26,16 +26,17 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 export default class infocimahi extends Component {
 
   render() {
+    let Tabname = ["Kategori","Lokasi","Bantuan","About"];
    return (
       <View style={styles.container}>
         <View style={styles.judul}>
-          <Image source={require('../assets/logo.png')} style={{width: 100, height: 50}} />
+          <Image source={require('../assets/logo.png')} style={{width: 200, height: 80}} />
           
         </View>
         <ScrollableTabView
         initialPage={0}
-        renderTabBar={() => <Navbar />}>
-          <Kategori tabLabel="home" />
+        renderTabBar={() => <Navbar name={Tabname} />}>
+          <Kategori tabLabel="list-alt" />
           <Lokasi tabLabel="map-marker"/>
           <Bantuan tabLabel="info"/>
           <About tabLabel="group"/>
@@ -52,7 +53,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
   },
   judul: {
-    height: 30,
+    height: 100,
     backgroundColor: '#DD4B39',
     alignItems: 'center',
     justifyContent: 'center'

@@ -22,51 +22,12 @@ export default class Kategori extends Component {
         modalVisible: false
     };
   }
-   setModalVisible(visible) {
-        this.setState({
-            modalVisible: visible,
-            // selectedItem: x
-        });
-    }
-  componentWillMount() {
-    fetch('http://info-cimahi.netii.net/api/kategori')
-      .then((response) => response.json())
-      .then((responseJson) => {
-        this.setState({ dataSource: ds.cloneWithRows(responseJson) });
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }
-
    
   render() {
       return (
         <View style={styles.container}>
           <Text style={styles.judul}>Kategori</Text>
-          <ListView
-            contentContainerStyle={styles.list}
-            dataSource={this.state.dataSource}
-            renderRow={(rowData) => <View style={styles.item} onPress={this.props.OnList.bind(this)}>
-                  <Image
-            style={{width: 110, height: 110}}
-            source={{uri: 'http://info-cimahi.netii.net/images/'+rowData.image}}
-            
-          />
-         
-          </View>
-            }
-          />
 
-           <Modal
-              animationType="slide"
-              transparent={false}
-              visible={this.state.modalVisible}
-              onRequestClose={() => {this.setModalVisible(!this.state.modalVisible)}}
-              >
-
-              <Text>Test</Text>
-            </Modal>
         </View>
 
 

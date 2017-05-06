@@ -11,9 +11,6 @@ import {
   TouchableOpacity,
   Linking
 } from 'react-native';
-import getTheme from '../theme/components';
-import myTheme from '../theme/variables/myTheme';
-
 // import list from './bantuan';
 
 // import { StackNavigator } from 'react-navigation'
@@ -25,12 +22,7 @@ import {
  Left,
  Right,
  Body,
- Button,
- Card, 
- CardItem,
- StyleProvider,
- Header,
- Title 
+ Button 
   } from 'native-base';
 
 var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
@@ -70,8 +62,6 @@ export default class Kategori extends Component {
  render() {
   // const { navigate } = this.props.navigation; 
       return (
-          <StyleProvider style={getTheme(myTheme)} >
-      
         <View style={styles.container}>
           <Text style={styles.judul}>Kategori</Text>
           <ListView
@@ -82,8 +72,7 @@ export default class Kategori extends Component {
 
         </View>
 
-  </StyleProvider>
-      
+
       );
   } 
 }
@@ -137,7 +126,6 @@ class Row extends Component{
     }
   render(){
     return(
-        <StyleProvider style={getTheme(myTheme)} >
       <View>
           <TouchableOpacity onPress={()=>this.List(true, this.props.id)}>
             <Image
@@ -152,17 +140,18 @@ class Row extends Component{
               onRequestClose={() => {this.List(!this.state.modalList)}}
               >
           
-          <Header><Title><Text style={styles.judul}>{this.props.nama_kategori}</Text></Title></Header>
-
+            <View style={styles.container}>
+          <Text style={styles.judul}>List</Text>
           <ListView
             dataSource={this.state.dataSource}
             renderRow={(data) => <Detail {...data}/>}
           />
 
+        </View>
+
               </Modal>
 
         </View>
-        </StyleProvider>
     );
   }
 }
@@ -210,13 +199,10 @@ class Detail extends Component{
     }
 
 
-
-
- test(lat, lng){
-  //  console.warn(lat, lng);
+ direction(latitude, longitude, lat, lng){
 
     const location = this.state;
-    const url = `http://maps.google.com/maps?saddr=${location.latitude},${location.longitude}&daddr=${lat},${lng}`
+    const url = `http://maps.google.com/maps?saddr=${location.latitude},${location.longitude}&daddr=${location.lat},${location.lng}`
     
     return Linking.canOpenURL(url).then((supported) => {
     if (!supported) {
@@ -230,27 +216,20 @@ class Detail extends Component{
   render(){
     
     return(
-       <StyleProvider style={getTheme(myTheme)} >
       <View>
-        <Card>
-              <CardItem>
-               <View style={{flexDirection: 'row'}}>
-                 <View style={{justifyContent: 'center'}}>
-                   <Image source={{uri:'http://info-cimahi.netii.net/images/'+ this.props.image}} style={{width: 80, height: 80,}}/>
-                 </View>
-
-                 <View style={{width: 0,flexGrow: 1, marginLeft: 3,}}>
-                   <Text style={styles.listTitle}>{this.props.nama_tempat}</Text>
-                  <Text style={styles.listContent}>{this.props.alamat}</Text>
+            <ListItem thumbnail >
+              <Left>
+                  <Thumbnail square source={{uri:'http://info-cimahi.netii.net/images/'+ this.props.image}} style={{width: 80, height: 80, marginRight: 5}}/>
+              </Left>
+              <Body>
+                  <Text>{this.props.nama_tempat}</Text>
+                  <Text note>{this.props.alamat}</Text>
                   <View style={{flexDirection:'row'}}>
-                  <Button small success style={{marginRight: 10}} onPress={() => console.warn(this.props.latitude, this.props.longitude)}><Text>  Posisi </Text></Button>
-                  <Button small onPress={()=> this.test(this.props.latitude, this.props.longitude)}><Text>  Tunjukan </Text></Button>
+                  <Button small success style={{marginRight: 10}}><Text>  Posisi </Text></Button>
+                  <Button small onPress={()=> this.direction(this.state.latitude, this.state.longitude, this.props.latitude, this.props.longitude)}><Text>  Tunjukan </Text></Button>
                   </View>
-                 </View>
-                 </View>
-              </CardItem>
-          </Card>
-           
+              </Body>
+          </ListItem>
 
            <Modal
               animationType="slide"
@@ -269,7 +248,6 @@ class Detail extends Component{
               </Modal>
 
         </View>
-        </StyleProvider>
     );
   }
 }
@@ -409,20 +387,15 @@ const styles = StyleSheet.create({
     judul: {
       fontFamily: 'Roboto-Medium',
       fontSize: 20,
-      textAlign: 'center',
-      justifyContent: 'center',
-      flexWrap: 'wrap'
+      textAlign: 'center'
     },
     listContent: {
-      fontFamily : 'Roboto',
-      fontSize: 12,
-      flex: 1,
-      flexWrap: 'wrap'
+      fontFamily : 'Roboto-Medium',
+      fontSize: 14
     },
     listTitle: {
       fontFamily : 'Roboto-Medium',
-      fontSize: 14,
-      flexWrap: 'wrap'
+      fontSize: 16
     },
      row: { 
        flexDirection: 'row', 

@@ -17,7 +17,6 @@ import {
 import home from './src/view/home'
 import test from './src/test/test'
 // import coba from './coba'
-import App from './app/index';
 
 export default class infocimahi extends Component {
  componentDidMount() {

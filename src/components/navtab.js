@@ -24,9 +24,10 @@ export default class NavigationTab extends Component {
               <Icon
                 name={tab}
                 size={30}
-                color={this.props.activeTab === i ? 'rgb(0,0,0)' : 'rgb(204,204,204)'}
+                color={this.props.activeTab === i ? 'rgb(0,0,0)' : 'rgb(255, 255, 255)'}
               />
-            </TouchableOpacity>
+            <Text style={{fontWeight:'bold', fontSize:10, color:this.props.activeTab === i ? 'rgb(0,0,0)' : 'rgb(255, 255, 255)'}}>{`${this.props.name[i]}`}</Text>
+          </TouchableOpacity>
           )
         })}
       </View>
