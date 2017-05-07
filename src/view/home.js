@@ -22,26 +22,30 @@ import Navbar from '../components/navtab';
 import List from '../components/list';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import getTheme from '../theme/components';
+import myTheme from '../theme/variables/myTheme';
+import { StyleProvider } from 'native-base';
 
 export default class infocimahi extends Component {
 
   render() {
-    let Tabname = ["Kategori","Lokasi","Bantuan","About"];
+    let Tabname = ["Beranda","Bantuan","About"];
    return (
+     <StyleProvider style={getTheme(myTheme)}>
       <View style={styles.container}>
         <View style={styles.judul}>
-          <Image source={require('../assets/logo.png')} style={{width: 200, height: 80}} />
+          <Image source={require('../assets/logo.png')} style={{width: 134, height: 16, marginBottom: 10}} />
           
         </View>
         <ScrollableTabView
         initialPage={0}
         renderTabBar={() => <Navbar name={Tabname} />}>
           <Kategori tabLabel="list-alt" />
-          <Lokasi tabLabel="map-marker"/>
           <Bantuan tabLabel="info"/>
           <About tabLabel="group"/>
         </ScrollableTabView>
       </View>
+      </StyleProvider>
     );
   }
 
@@ -53,7 +57,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
   },
   judul: {
-    height: 100,
+    height: 50,
     backgroundColor: '#DD4B39',
     alignItems: 'center',
     justifyContent: 'center'

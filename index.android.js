@@ -15,7 +15,8 @@ import {
 } from 'react-native';
 
 import home from './src/view/home'
-import test from './src/test/test'
+import splash from './src/view/splash'
+// import test from './src/test/test'
 // import coba from './coba'
 
 export default class infocimahi extends Component {
@@ -31,10 +32,16 @@ export default class infocimahi extends Component {
 
   render() {
     return (
-      <Navigator
+           <Navigator
         renderScene={this.renderScene}
-        initialRoute={{component: test}}
-        ref={(nav) => { this.appNav = nav; }} />
+        initialRoute={{component: splash}}
+        ref={(nav) => { this.appNav = nav; }}
+        configureScene={(route) => {
+          if (route.sceneConfig) {
+            return route.sceneConfig;
+          }
+          return Navigator.SceneConfigs.HorizontalSwipeJump;
+        }} />
       );
     }
 
@@ -43,4 +50,4 @@ export default class infocimahi extends Component {
     }
 }
 
-AppRegistry.registerComponent('infocimahi', () => home);
+AppRegistry.registerComponent('infocimahi', () => infocimahi);

@@ -11,7 +11,7 @@ export default class infocimahi extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-         About
+         Info Cimahi merupakan media informasi tempat-tempat umum yang berada wilayah cimahi seperti kantor pemerintahan, tempat wisata, bank, pom bensin, mini market, dll. aplikasi ini diperuntukan bagi masyarakat cimahi yang kurang mengenal derah cimahi dan bagi masyarakat luar cimahi seperti wisatawan, perantau yang bertinggal atau berkunjung ke daerah cimahi
         </Text>
       </View>
     );

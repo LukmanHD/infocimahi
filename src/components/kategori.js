@@ -13,7 +13,7 @@ import {
 } from 'react-native';
 import getTheme from '../theme/components';
 import myTheme from '../theme/variables/myTheme';
-
+import Icon from 'react-native-vector-icons/FontAwesome';
 // import list from './bantuan';
 
 // import { StackNavigator } from 'react-navigation'
@@ -87,18 +87,7 @@ export default class Kategori extends Component {
       );
   } 
 }
-/*
-const Row = (props) => (
-  <View style={styles.item} onPress={()=>this.setModalVisible(true)}>
-                  <Image
-            style={{width: 110, height: 110}}
-            source={{uri: 'http://info-cimahi.netii.net/images/'+props.image}}
-            
-          />
-         
-          </View>
-);
-*/
+
 class Row extends Component{
   constructor(props){
     super(props);
@@ -243,8 +232,7 @@ class Detail extends Component{
                    <Text style={styles.listTitle}>{this.props.nama_tempat}</Text>
                   <Text style={styles.listContent}>{this.props.alamat}</Text>
                   <View style={{flexDirection:'row'}}>
-                  <Button small success style={{marginRight: 10}} onPress={() => console.warn(this.props.latitude, this.props.longitude)}><Text>  Posisi </Text></Button>
-                  <Button small onPress={()=> this.test(this.props.latitude, this.props.longitude)}><Text>  Tunjukan </Text></Button>
+                  <Button small onPress={()=> this.test(this.props.latitude, this.props.longitude)}><Icon name="map-marker"><Text>  Tunjukan </Text></Icon></Button>
                   </View>
                  </View>
                  </View>
@@ -273,103 +261,6 @@ class Detail extends Component{
     );
   }
 }
-
-/* Bisa */
-/*
-class Detail extends Component{
-  constructor(props){
-    super(props);
-    this.state = {
-        modalDetail: false,
-        select : ''
-    }
-  }
- 
-    Detail(visible, x) {
-        this.setState({
-            modalDetail: visible,
-            select : x
-        });
-    }
-  render(){
-    return(
-      <View>
-        <View style={styles.listKat}>
-          <TouchableOpacity onPress={()=>this.Detail(true, this.props.id)}>
-            <View style={styles.row}> 
-            <Image 
-            style={styles.thumb}
-            source={{uri: 'http://info-cimahi.netii.net/images/'+ this.props.image}} />
-           <View>
-           <Text style={styles.listTitle}>{this.props.nama_tempat}</Text>
-            <Text style={styles.text}>{this.props.alamat}</Text>
-            </View>
-           </View>
-         </TouchableOpacity>
-         </View>
-
-
-           <Modal
-              animationType="slide"
-              transparent={false}
-              visible={this.state.modalDetail}
-              onRequestClose={() => {this.Detail(!this.state.modalDetail)}}
-              >
-          
-            <View style={styles.container}>
-          <Text style={styles.judul}>Detail</Text>
-         <Text style={styles.judul}>{this.props.keterangan}</Text>
-         
-
-        </View>
-
-              </Modal>
-
-        </View>
-    );
-  }
-}
-*/
-/*
-render() {
-  // const { navigate } = this.props.navigation; 
-      return (
-        <View style={styles.container}>
-      <Button onPress={()=>this.List(true)} title="Test" />
-       
-
-         <Modal
-              animationType="slide"
-              transparent={false}
-              visible={this.state.modalList}
-              onRequestClose={() => {this.List(!this.state.modalList)}}
-              >
-              <View style={{alignItems:'center'}}>
-        <Button onPress={() => {this.List(!this.state.modalList)}} title="Close" />
-        <Button onPress={()=>this.Detail(true)} title="Detail" />
-        
-         <Modal
-              animationType="slide"
-              transparent={false}
-              visible={this.state.modalDetail}
-              onRequestClose={() => {this.Detail(!this.state.modalDetail)}}
-              >
-              <View style={{alignItems:'center'}}>
-        <Button onPress={() => {this.Detail(!this.state.modalDetail)}} title="Close" />
-        
-                </View>
-              </Modal>
-
-
-                </View>
-                
-              </Modal>
-
-               </View>
-      );
-  } 
-}*/
-
 
 
 const styles = StyleSheet.create({
